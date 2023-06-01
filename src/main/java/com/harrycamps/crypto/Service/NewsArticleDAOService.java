@@ -19,15 +19,24 @@ public class NewsArticleDAOService {
         this.newsArticleDAO = newsArticleDAO;
     }
 
-    public void insertNewsArticles(String coinName){
+    /**
+     * Scrapes news articles for a specific coin and inserts them into the database.
+     *
+     * @param coinName the name of the coin
+     */
+    public void insertNewsArticles(String coinName) {
         List<NewsArticle> articles = this.newsArticleScraper.scrapeCoinNews(coinName);
         this.newsArticleDAO.insertNewsArticles(articles);
     }
-    public void insertAllNewsArticles(List<Coin> coins){
-        for(Coin coin : coins){
+
+    /**
+     * Scrapes news articles for all coins in the provided list and inserts them into the database.
+     *
+     * @param coins the list of coins
+     */
+    public void insertAllNewsArticles(List<Coin> coins) {
+        for (Coin coin : coins) {
             this.insertNewsArticles(coin.getName());
         }
     }
-
-
 }

@@ -1,17 +1,20 @@
 package com.harrycamps.crypto.DAO.Mappers;
+
 import com.harrycamps.crypto.Model.Coin;
 import org.springframework.jdbc.core.RowMapper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-//private int cid;
-//private String uuid;
-//private String symbol;
-//private String name;
-//private String iconUrl;
-//private String price;
-
 public class CoinMapper implements RowMapper<Coin> {
+
+    /**
+     * Maps a row of the ResultSet to a Coin object.
+     *
+     * @param rs     the ResultSet
+     * @param rowNum the current row number
+     * @return the mapped Coin object
+     * @throws SQLException if a database access error occurs
+     */
     @Override
     public Coin mapRow(ResultSet rs, int rowNum) throws SQLException {
         Coin coin = new Coin();

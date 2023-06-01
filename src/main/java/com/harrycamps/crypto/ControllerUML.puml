@@ -1,0 +1,137 @@
+@startuml
+  class CoinController {
+    - coinDAO: CoinDAO
+    - newsArticleDAO: NewsArticleDAO
+    - newsArticleDAOService: NewsArticleDAOService
+
+    + CoinController(coinDAO: CoinDAO, newsArticleDAO: NewsArticleDAO, newsArticleDAOService: NewsArticleDAOService)
+    + getTest(model: Model): String
+    + getCoinDetails(model: Model): String
+    + getCoinInfo(coinName: String, model: Model): String
+  }
+  @enduml
+  @startuml
+  class Coin {
+      - cid: int
+      - uuid: String
+      - symbol: String
+      - name: String
+      - iconUrl: String
+      - price: double
+
+      + getCid(): int
+      + setCid(cid: int): void
+      + getUuid(): String
+      + setUuid(uuid: String): void
+      + getSymbol(): String
+      + setSymbol(symbol: String): void
+      + getName(): String
+      + setName(name: String): void
+      + getIconUrl(): String
+      + setIconUrl(iconUrl: String): void
+      + getPrice(): double
+      + setPrice(price: double): void
+      + toString(): String
+  }
+  @enduml
+  @startuml
+  class CoinDAO {
+      - jdbcTemplate: JdbcTemplate
+      + CoinDAO(jdbcTemplate: JdbcTemplate)
+      + getAllCoins(): List<Coin>
+      + read(cid: int): Coin
+      + create(coin: Coin): void
+      + insertTop8Coins(coins: List<Coin>): void
+      + update(coin: Coin): void
+      + getCoinByName(name: String): Coin
+      + delete(cid: int): void
+  }
+
+  @enduml
+  @startuml
+
+  class CoinApiDOA {
+      - BASEURL: String
+      - APIKEY: String
+      - HOSTNAME: String
+      + getRequest(apiQuery: String): String
+      + searchForCoins(coinName: String): String
+      + getTop8Coins(): String
+      + getPrice(uuid: String): double
+  }
+  @enduml
+  @startuml
+  class NewsArticle {
+      - newsId: int
+      - newsTitle: String
+      - newsUrl: String
+      - cryptoName: String
+      + NewsArticle(newsTitle: String, newsUrl: String, cryptoName: String)
+      + getNewsId(): int
+      + setNewsId(newsId: int): void
+      + getNewsTitle(): String
+      + setNewsTitle(newsTitle: String): void
+      + getNewsUrl(): String
+      + setNewsUrl(newsUrl: String): void
+      + getCryptoName(): String
+      + setCryptoName(cryptoName: String): void
+  }
+  @enduml
+  @startuml
+  class NewsArticleDAO {
+      - jdbcTemplate: JdbcTemplate
+      + NewsArticleDAO(jdbcTemplate: JdbcTemplate)
+      + getAllArticles(): List<NewsArticle>
+      + getAllArticlesForCoin(coinName: String): List<NewsArticle>
+      + create(newsArticle: NewsArticle): void
+      + insertNewsArticles(newsArticles: List<NewsArticle>): void
+      + deleteAllNewsArticles(): void
+      + update(newsArticle: NewsArticle): void
+      + delete(nid: int): void
+  }
+  @enduml
+  @startuml
+
+  class NewsArticleScraper {
+      - SEARCH_URL: String
+      + scrapeCoinNews(coinName: String): List<NewsArticle>
+  }
+
+  @enduml
+  @startuml
+
+  class NewsArticleDAOService {
+      - newsArticleDAO: NewsArticleDAO
+      - newsArticleScraper: NewsArticleScraper
+      + NewsArticleDAOService(newsArticleDAO: NewsArticleDAO)
+      + insertNewsArticles(coinName: String): void
+      + insertAllNewsArticles(coins: List<Coin>): void
+  }
+
+@enduml
+@startuml
+
+class HourlyTask {
+    - newsArticleDAO: NewsArticleDAO
+    - coinDAO: CoinDAO
+    - newsArticleDAOService: NewsArticleDAOService
+    + HourlyTask(newsArticleDAO: NewsArticleDAO, coinDAO: CoinDAO, newsArticleDAOService: NewsArticleDAOService)
+    + executeHourlyTask(): void
+}
+
+
+@enduml
+
+
+
+
+
+
+
+
+
+
+
+
+
+

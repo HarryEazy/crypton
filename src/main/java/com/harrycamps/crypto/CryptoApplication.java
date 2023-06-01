@@ -1,14 +1,8 @@
 package com.harrycamps.crypto;
 
-import com.harrycamps.crypto.DAO.NewsArticleDAO;
-import com.harrycamps.crypto.Model.NewsArticle;
-import com.harrycamps.crypto.Service.NewsArticleService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.scheduling.annotation.EnableScheduling;
-
-import java.util.List;
 
 @SpringBootApplication
 @EnableScheduling
