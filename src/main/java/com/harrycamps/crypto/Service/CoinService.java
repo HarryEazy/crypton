@@ -1,5 +1,5 @@
 package com.harrycamps.crypto.Service;
-import com.harrycamps.crypto.Controllers.CoinApiController;
+import com.harrycamps.crypto.DAO.CoinApiDOA;
 import com.harrycamps.crypto.DAO.CoinDAO;
 import com.harrycamps.crypto.Model.Coin;
 
@@ -8,9 +8,9 @@ import java.util.List;
 
 public class CoinService {
     private final CoinDAO coinDAO;
-    private final CoinApiController coinApiController;
+    private final CoinApiDOA coinApiController;
 
-    public CoinService(CoinDAO coinDAO, CoinApiController coinApiController) {
+    public CoinService(CoinDAO coinDAO, CoinApiDOA coinApiController) {
         this.coinDAO = coinDAO;
         this.coinApiController = coinApiController;
     }

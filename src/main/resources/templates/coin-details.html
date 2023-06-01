@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Coin Details</title>
+</head>
+<body>
+<h1>Coin Details</h1>
+
+<table>
+    <tr>
+        <th>Image</th>
+        <th>Symbol</th>
+        <th>Name</th>
+        <th>Price</th>
+    </tr>
+    <tr th:each="coin : ${coins}">
+        <td>
+            <img th:src="${coin.iconUrl}" alt="Coin Icon" width="50" height="50" />
+        </td>
+        <td th:text="${coin.symbol}"></td>
+        <td><a th:href="@{/coins/details/{coinName}(coinName=${coin.name})}" th:text="${coin.name}"></a></td>
+        <td th:text="${coin.price}"></td>
+    </tr>
+</table>
+</body>
+</html>

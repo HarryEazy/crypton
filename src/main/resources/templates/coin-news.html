@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Coin Information</title>
+</head>
+<body>
+<h2>Coin Information</h2>
+<!--<h3 th:="${coin.name}"></h3>-->
+<!--    <div>-->
+<h3 th:text="${coin.name}"></h3>
+    <p>Symbol: <span th:text="${coin.symbol}"></span></p>
+    <p>Icon URL: <img th:src="${coin.iconUrl}" alt="Coin Icon" width="30" height="30" /></p>
+    <p>Price: <span th:text="${coin.price}"></span></p>
+    </div>
+
+<h2>News Articles</h2>
+<div>
+    <ul>
+        <!-- Iterate over the news articles list and display them -->
+        <li th:each="article : ${newsArticles}">
+            <p>Title: <span th:text="${article.newsTitle}"></span></p>
+            <p>Link: <a th:href="${article.newsUrl}" th:text="${article.newsUrl}">Link</a></p>
+            <!-- Add more details as needed -->
+        </li>
+
+    </ul>
+</div>
+</body>
+</html>

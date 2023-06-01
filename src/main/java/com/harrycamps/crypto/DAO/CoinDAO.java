@@ -35,6 +35,14 @@ public class CoinDAO {
         String sql = "UPDATE coins SET uuid = ?, symbol = ?, name = ?, iconUrl = ?, price = ? WHERE cid = ?";
         jdbcTemplate.update(sql, coin.getUuid(), coin.getSymbol(), coin.getName(), coin.getIconUrl(), coin.getPrice(), coin.getCid());
     }
+    public Coin getCoinByName(String name) {
+        String sql = "SELECT * FROM coins WHERE name = ?";
+        Coin coin = jdbcTemplate.queryForObject(sql, new CoinMapper(), name);
+        System.out.println(coin);
+        return coin;
+    }
+
+
 
     public void delete(int cid) {
         String sql = "DELETE FROM coins WHERE cid = ?";

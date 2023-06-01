@@ -1,8 +1,7 @@
-package com.harrycamps.crypto.Controllers;
+package com.harrycamps.crypto.DAO;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.harrycamps.crypto.Model.ApiResponseSearch;
 import com.harrycamps.crypto.Model.ApiResponseTop8Coins;
-import jakarta.annotation.PostConstruct;
 import okhttp3.*;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +9,7 @@ import java.io.IOException;
 import java.util.List;
 
 @Service
-public class CoinApiController {
+public class CoinApiDOA {
 
     private static final String BASEURL = "https://api.coinranking.com/v2/";
     private static final String APIKEY = "coinranking8f4e02ca64e308c673d27c12d8304b5547c3a44bba7756ab";
@@ -18,7 +17,7 @@ public class CoinApiController {
     //                .url("https://api.coinranking.com/v2/search-suggestions?query=bitcoin")
     //                .url("https://api.coinranking.com/v2/search-suggestions")
 
-    public String getRequest(String apiQuery) throws IOException {
+    private String getRequest(String apiQuery) throws IOException {
         OkHttpClient client = new OkHttpClient();
         String responseBodyString = "";
 

@@ -33,9 +33,28 @@ public class NewsArticleDAO {
 
         return newsArticles;
     }
+    public List<NewsArticle> getAllArticlesForCoin(String coinName) {
+        String sql = "SELECT * FROM newsarticles WHERE cryptoname = ?";
+        List<NewsArticle> newsArticles = jdbcTemplate.query(sql, new NewsArticleMapper(), coinName);
+
+        return newsArticles;
+    }
+
     public void create(NewsArticle newsArticle) {
-        String sql = "INSERT INTO newsarticles (title, name, url) VALUES (?, ?, ?)";
-        jdbcTemplate.update(sql, newsArticle.getNewsTitle(), newsArticle.getCryptoName(), newsArticle.getNewsUrl());
+        String sql = "INSERT INTO newsarticles (title, url, cryptoname) VALUES (?, ?, ?)";
+        jdbcTemplate.update(sql, newsArticle.getNewsTitle(), newsArticle.getNewsUrl(), newsArticle.getCryptoName());
+    }
+    public void insertNewsArticles(List<NewsArticle> newsArticles) {
+        String sql = "INSERT INTO newsarticles (title, url, cryptoname) VALUES (?, ?, ?)";
+        for (NewsArticle article: newsArticles){
+            jdbcTemplate.update(sql, article.getNewsTitle(), article.getNewsUrl(), article.getCryptoName());
+
+        }
+
+    }
+    public void deleteAllNewsArticles(){
+        String sql = "DELETE FROM newsarticles";
+        jdbcTemplate.update(sql);
     }
 
 //    public NewsArticle read(int cid) {

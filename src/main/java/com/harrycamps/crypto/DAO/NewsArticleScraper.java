@@ -9,11 +9,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CoinNewsScraper {
+public class NewsArticleScraper {
     private static final String SEARCH_URL = "https://www.newsnow.co.uk/h/Business+&+Finance/Cryptocurrencies/";
 
 
-    public void scrapeCoinNews(String coinName) {
+    public List<NewsArticle> scrapeCoinNews(String coinName) {
+        List<NewsArticle> newsArticles = new ArrayList<>();
         try {
             // Construct the search URL with the coin name
             String searchUrl = SEARCH_URL + coinName;
@@ -23,7 +24,7 @@ public class CoinNewsScraper {
             System.out.println("SEARCHING...");
             Elements articleElements = document.select("div.hl");
 
-            List<NewsArticle> newsArticles = new ArrayList<>();
+
             int count = 0;
             for (Element articleElement : articleElements) {
                 if (count >= 10) {
@@ -67,5 +68,7 @@ public class CoinNewsScraper {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        return newsArticles;
     }
 }

@@ -23,10 +23,13 @@ public class DataRetriever {
 
     @PostConstruct
     public void retrieveData() {
-        List<Coin> coins = this.coinDAO.getAllCoins();
-        for(Coin c : coins){
-            System.out.println(c);
-        }
+//        NewsArticleDAOService newsArticleDAOService = new NewsArticleDAOService(newsArticleDAO);
+//        List<Coin> coins = this.coinDAO.getAllCoins();
+//        this.newsArticleDAO.deleteAllNewsArticles();
+//        newsArticleDAOService.insertAllNewsArticles(coins);
+//        for(Coin c : coins){
+//            System.out.println(c);
+//        }
 
 //        // Your code here
 //        System.out.println("Running code after Spring context initialization");

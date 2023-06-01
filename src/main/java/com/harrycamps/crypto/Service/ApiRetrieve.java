@@ -1,5 +1,5 @@
 package com.harrycamps.crypto.Service;
-import com.harrycamps.crypto.DAO.CoinNewsScraper;
+import com.harrycamps.crypto.DAO.NewsArticleScraper;
 import jakarta.annotation.PostConstruct;
 import okhttp3.*;
 import org.springframework.stereotype.Service;
@@ -14,9 +14,10 @@ public class ApiRetrieve {
     //private RequestBody body;
     @PostConstruct
     public void getAPIData() throws IOException{
-        CoinNewsScraper coinNewsScraper = new CoinNewsScraper();
-        // Ethereum, Bitcoin
-        coinNewsScraper.scrapeCoinNews("Ethereum");
+
+//        NewsArticleScraper newsArticleScraper = new NewsArticleScraper();
+//        // Ethereum, Bitcoin
+//        newsArticleScraper.scrapeCoinNews("Ethereum");
 //        CoinApiController coinApiController = new CoinApiController();
 //        coinApiController.getPrice("Qwsogvtv82FCd");
 //        OkHttpClient client = new OkHttpClient();
