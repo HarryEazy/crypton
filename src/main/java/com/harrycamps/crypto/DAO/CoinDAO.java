@@ -91,4 +91,8 @@ public class CoinDAO {
         String sql = "DELETE FROM coins WHERE cid = ?";
         jdbcTemplate.update(sql, cid);
     }
+    public void deleteAllByName(String name){
+        String sql = "DELETE FROM coins WHERE name = ?";
+        jdbcTemplate.update(sql, name);
+    }
 }
